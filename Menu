@@ -1,21 +1,31 @@
 import pygame
 
-start_img = pygame.image.load('START_button.png').convert_alpha()
-
-class Button():
-    def __init__(self, x, y, image):
-        self.image = image
-        self.rect = self.image.get_rect()
-        self.rect.topleft = (x,y)
+size = (700, 500)
+screen = pygame.display.set_mode(size)
 
 
 class Menu():
+    pygame.display.set_caption('Tic Tac Toe')
+    menu_img = pygame.image.load('Menu.png').convert_alpha()
+    start_img = pygame.image.load('START_button.png').convert_alpha()
+    how_2_play_img = pygame.image.load('HOW_TO_PLAY_button.png').convert_alpha()
+
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
     SAND = (225, 198, 153)
 
-    size = (700, 500)
-    screen = pygame.display.set_mode(size)
+    class Button():
+        def __init__(self, x, y, image):
+            self.image = image
+            self.rect = self.image.get_rect()
+            self.rect.topleft = (x, y)
+
+        def draw(self):
+            # draw button on screen
+            screen.blit(self.image, (self.rect.x, self.rect.y))
+
+    start_button = Button(100,100, start_img)
+    how_2_play_button = Button(100, 150, how_2_play_img)
 
     done = False
 
@@ -26,7 +36,9 @@ class Menu():
             if event.type == pygame.QUIT:
                 done = True
 
-        screen.fill(SAND)
+        screen.blit(menu_img, (0, 0))
+        start_button.draw()
+        how_2_play_button.draw()
 
         pygame.display.flip()
 
