@@ -19,12 +19,27 @@ class Menu():
             self.image = image
             self.rect = self.image.get_rect()
             self.rect.topleft = (x, y)
+            self.clicked = False
 
         def draw(self):
+            action = False
             # draw button on screen
+
+            pos = pygame.mouse.get_pos()
+
+            if self.rect.collidepoint(pos):
+                if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
+                    self.clicked = True
+                    action = True
+
+            if pygame.mouse.get_pressed()[0] == 0:
+                self.clicked = False
+
             screen.blit(self.image, (self.rect.x, self.rect.y))
 
-    start_button = Button(100,100, start_img)
+            return action
+
+    start_button = Button(100, 100, start_img)
     how_2_play_button = Button(100, 150, how_2_play_img)
 
     done = False
@@ -37,8 +52,10 @@ class Menu():
                 done = True
 
         screen.blit(menu_img, (0, 0))
-        start_button.draw()
-        how_2_play_button.draw()
+        if start_button.draw():
+            print("Start")
+        if how_2_play_button.draw():
+            print("How to Play")
 
         pygame.display.flip()
 
