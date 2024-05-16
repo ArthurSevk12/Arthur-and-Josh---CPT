@@ -1,6 +1,6 @@
 import pygame
 from Button import Button
-from Game_board import Board, board_draw
+from GameBoard import Board, board_draw
 
 size = (700, 500)
 screen = pygame.display.set_mode(size)
@@ -37,6 +37,7 @@ class Menu():
 
         if how_2_play_button.draw(screen):
             print("How to Play")
+            screen.blit(start_img, (0,0))
 
         pygame.display.flip()
 
