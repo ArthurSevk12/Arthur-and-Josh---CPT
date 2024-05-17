@@ -2,7 +2,8 @@ import pygame
 from Button import Button
 from GameBoard import board_draw
 
-def how_to_play():
+
+def draw_how_2_play_menu():
     board_image = pygame.image.load('How_To_Play_Menu.png').convert_alpha()
     start_img = pygame.image.load('START_button.png').convert_alpha()
 
