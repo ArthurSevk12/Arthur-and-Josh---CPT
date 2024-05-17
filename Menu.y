@@ -1,6 +1,7 @@
 import pygame
 from Button import Button
 from GameBoard import Board, board_draw
+from How_To_Play_Menu import draw_how_2_play_menu
 
 size = (700, 500)
 screen = pygame.display.set_mode(size)
@@ -13,6 +14,7 @@ class Menu():
     menu_img = pygame.image.load('Menu.png').convert_alpha()
     start_img = pygame.image.load('START_button.png').convert_alpha()
     how_2_play_img = pygame.image.load('HOW_TO_PLAY_button.png').convert_alpha()
+    how_2_play_menu = pygame.image.load('How_To_Play_Menu.png').convert_alpha()
 
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
@@ -22,15 +24,12 @@ class Menu():
     how_2_play_button = Button(300, 370, how_2_play_img)
 
     done = False
-    background_done = False
+
 
     clock = pygame.time.Clock()
 
     while not done:
-        if not background_done:
-            screen.blit(menu_img, (0, 0))
-        else:
-            screen.blit(start_img, (100, 100))
+        screen.blit(menu_img, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
@@ -40,8 +39,8 @@ class Menu():
             board_draw()
 
         if how_2_play_button.draw(screen):
-            print("How to Play")
-            background_done = True
+            done = True
+            draw_how_2_play_menu()
 
         pygame.display.flip()
 
