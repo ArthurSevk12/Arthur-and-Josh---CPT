@@ -25,7 +25,6 @@ class Menu():
 
     done = False
 
-
     clock = pygame.time.Clock()
 
     while not done:
