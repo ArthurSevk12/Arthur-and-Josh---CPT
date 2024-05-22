@@ -3,9 +3,7 @@ import pygame
 
 def board_draw():
     # Define some colors
-    BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
-    SAND = (225, 198, 153)
 
     board_image = pygame.image.load('Gameboard.png').convert_alpha()
 
@@ -18,7 +16,6 @@ def board_draw():
 
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
-
     while not done:
         # --- Main event loop
         for event in pygame.event.get():
@@ -26,6 +23,7 @@ def board_draw():
                 done = True
 
         screen.blit(board_image, (0, 0))
+        pygame.draw.line(screen, WHITE, [160,78], [160, 434], 5)
 
         # Update the screen with drawing.
         pygame.display.flip()
