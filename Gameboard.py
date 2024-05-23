@@ -23,7 +23,10 @@ def board_draw():
                 done = True
 
         screen.blit(board_image, (0, 0))
-        pygame.draw.line(screen, WHITE, [160,78], [160, 434], 5)
+        pygame.draw.line(screen, WHITE, (160, 78), (160, 434), 3)
+        pygame.draw.line(screen, WHITE, (160, 78), (535, 78), 3)
+        pygame.draw.line(screen, WHITE, (160, 434), (535, 434), 3)
+        pygame.draw.line(screen, WHITE, (535, 78), (535, 434), 3)
 
         # Update the screen with drawing.
         pygame.display.flip()
