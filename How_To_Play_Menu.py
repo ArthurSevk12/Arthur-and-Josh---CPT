@@ -4,6 +4,7 @@ from GameBoard import board_draw
 
 
 def draw_how_2_play_menu():
+    # The bottom two lines load the png images for the buttons
     board_image = pygame.image.load('How_To_Play_Menu.png').convert_alpha()
     start_img = pygame.image.load('START_button.png').convert_alpha()
 
@@ -27,6 +28,7 @@ def draw_how_2_play_menu():
 
         screen.blit(board_image, (0, 0))
 
+        # This calls the game board menu
         if start_button.draw(screen):
             done = True
             board_draw()
