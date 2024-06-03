@@ -16,12 +16,16 @@ def board_draw():
 
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
+
+
+
     while not done:
         # --- Main event loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
 
+        pos = pygame.mouse.get_pos()
         screen.blit(board_image, (0, 0))
 
         # The bottom four lines draw the canvas lines of the game board
@@ -29,6 +33,9 @@ def board_draw():
         pygame.draw.line(screen, WHITE, (160, 78), (535, 78), 3)
         pygame.draw.line(screen, WHITE, (160, 434), (535, 434), 3)
         pygame.draw.line(screen, WHITE, (535, 78), (535, 434), 3)
+
+        if (160, 78) <= pos <= (283, 190):
+            print(pos)
 
         # Update the screen with drawing.
         pygame.display.flip()
