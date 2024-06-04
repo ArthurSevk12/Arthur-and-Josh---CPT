@@ -22,10 +22,14 @@ def board_draw():
     while not done:
         # --- Main event loop
         for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
                 done = True
+            #print(pos)
 
-        pos = pygame.mouse.get_pos()
+            if pygame.Rect(160, 78, 100, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
+                print('Click to change')
+
         screen.blit(board_image, (0, 0))
 
         # The bottom four lines draw the canvas lines of the game board
@@ -34,8 +38,7 @@ def board_draw():
         pygame.draw.line(screen, WHITE, (160, 434), (535, 434), 3)
         pygame.draw.line(screen, WHITE, (535, 78), (535, 434), 3)
 
-        if (160, 78) <= pos <= (283, 190):
-            print(pos)
+
 
         # Update the screen with drawing.
         pygame.display.flip()
