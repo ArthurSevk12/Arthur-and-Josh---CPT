@@ -27,12 +27,24 @@ def board_draw():
                 done = True
             #print(pos)
 
-            if pygame.Rect(160, 78, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
+            if pygame.Rect(162, 83, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
                 print('Click to change')
-            elif pygame.Rect(290, 82, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
+            elif pygame.Rect(290, 83, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
                 print('Click to change x2')
             elif pygame.Rect(418, 83, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
                 print('Click to change x3')
+            elif pygame.Rect(162, 195, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
+                print('Click to change x4')
+            elif pygame.Rect(290, 195, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
+                print('Click to change x5')
+            elif pygame.Rect(418, 195, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
+                print('Click to change x6')
+            elif pygame.Rect(162, 316, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
+                print('Click to change x7')
+            elif pygame.Rect(290, 316, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
+                print('Click to change x8')
+            elif pygame.Rect(418, 316, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
+                print('Click to change x9')
 
         screen.blit(board_image, (0, 0))
 
