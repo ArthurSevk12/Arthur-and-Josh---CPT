@@ -21,6 +21,7 @@ def board_draw():
 
     while not done:
         # --- Main event loop
+        screen.blit(board_image, (0, 0))
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
@@ -29,6 +30,7 @@ def board_draw():
 
             if pygame.Rect(162, 83, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
                 print('Click to change')
+                pygame.draw.rect(screen, WHITE, [162, 83, 115, 112], width=100)
             elif pygame.Rect(290, 83, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
                 print('Click to change x2')
             elif pygame.Rect(418, 83, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
@@ -46,7 +48,6 @@ def board_draw():
             elif pygame.Rect(418, 316, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
                 print('Click to change x9')
 
-        screen.blit(board_image, (0, 0))
 
         # The bottom four lines draw the canvas lines of the game board
         pygame.draw.line(screen, WHITE, (160, 78), (160, 434), 3)
