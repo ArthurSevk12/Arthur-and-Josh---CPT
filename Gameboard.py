@@ -2,11 +2,10 @@ import pygame
 from Icon import Icon
 
 
-
 def board_draw():
     # Define some colors
     WHITE = (255, 255, 255)
-    BLACK = (0,0,0)
+    BLACK = (0, 0, 0)
 
     board_image = pygame.image.load('Gameboard.png').convert_alpha()
     arthurs_img = pygame.image.load('Arthurs_Face_CPT.png').convert_alpha()
@@ -28,9 +27,12 @@ def board_draw():
     joshs_face = Icon(joshs_img)
     user_1_won = Icon(user_1_img)
     user_2_won = Icon(user_2_img)
-    arthurs_positions = []  # List to store positions of icons
+
+    # List to store positions of icons
+    arthurs_positions = []
     joshs_positions = []
 
+    # the bottom square variables are the squares of the Tic Tac Toe board canvas.
     square1 = 0
     square2 = 0
     square3 = 0
@@ -42,14 +44,14 @@ def board_draw():
     square9 = 0
     user_turn = 1
 
+    # the bottom function gets the squares and outputs the winning user
     def count_squares(first_square, second_square, third_square):
         if first_square == 1 and second_square == 1 and third_square == 1:
-            #screen.fill(BLACK)
-            user_1_won.draw(0,0,screen)
+            screen.fill(BLACK)
+            user_1_won.draw(0, 0, screen)
         elif first_square == 2 and second_square == 2 and third_square == 2:
-            #screen.fill(BLACK)
+            screen.fill(BLACK)
             user_2_won.draw(0, 0, screen)
-
 
     while not done:
         # --- Main event loop
@@ -59,6 +61,8 @@ def board_draw():
             if event.type == pygame.QUIT:
                 done = True
 
+            # The bottom if statements get the mouse position and determines which square on the Tik Tac Toe board the
+            # user has clicked
             if pygame.Rect(162, 83, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
                 if user_turn == 1:
                     arthurs_positions.append((162, 83))
@@ -127,7 +131,7 @@ def board_draw():
                 elif user_turn == 2:
                     joshs_positions.append((162, 316))
                     user_turn = 1
-                    square7 = 1
+                    square7 = 2
 
             elif pygame.Rect(290, 316, 115, 112).collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN:
                 if user_turn == 1:
@@ -152,19 +156,20 @@ def board_draw():
         # Draw the board
         screen.blit(board_image, (0, 0))
 
-        # Draw all icons in the list
+        # Lines 154 to 158 Draws all icons in the list onto the screen
         for pos in arthurs_positions:
             arthurs_face.draw(pos[0], pos[1], screen)
-
 
         for pos in joshs_positions:
             joshs_face.draw(pos[0], pos[1], screen)
 
+        # The bottom four lines
         pygame.draw.line(screen, WHITE, (160, 78), (160, 434), 3)
         pygame.draw.line(screen, WHITE, (160, 78), (535, 78), 3)
         pygame.draw.line(screen, WHITE, (160, 434), (535, 434), 3)
         pygame.draw.line(screen, WHITE, (535, 78), (535, 434), 3)
 
+        # Calling the count_squares function wil determine which user won
         count_squares(square1, square2, square3)
         count_squares(square4, square5, square6)
         count_squares(square7, square8, square9)
@@ -176,7 +181,6 @@ def board_draw():
 
         # The bottom four lines draw the canvas lines of the game board
 
-
         # Update the screen with drawing.
         pygame.display.update()
 
@@ -185,6 +189,7 @@ def board_draw():
 
     # Close the window and quit.
     pygame.quit()
+
 
 class Board:
     pass
